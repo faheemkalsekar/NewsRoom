@@ -1,14 +1,13 @@
-package com.gadgetmedia.newsroom.repository.data.source.remote
+package com.gadgetmedia.newsroom
 
 import com.gadgetmedia.newsroom.repository.data.source.NewsDataSource
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
- * Implementation of the data source that fetches data from the server.
+ * Implementation of a remote data source with static access to the data for easy testing.
  */
-@Singleton
-class NewsRemoteDataSource @Inject constructor() : NewsDataSource {
+class FakeNewsRemoteDataSource @Inject constructor() : NewsDataSource {
+
     override fun getNews() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

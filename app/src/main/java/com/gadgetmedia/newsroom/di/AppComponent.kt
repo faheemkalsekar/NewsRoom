@@ -2,6 +2,8 @@ package com.gadgetmedia.newsroom.di
 
 import android.app.Application
 import com.gadgetmedia.newsroom.NewsRoomApplication
+import com.gadgetmedia.newsroom.repository.data.source.NewsRepository
+import com.gadgetmedia.newsroom.source.NewsRepositoryModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -20,9 +22,14 @@ import javax.inject.Singleton
  * // and location of subcomponents.
  */
 @Singleton
-@Component(modules = arrayOf(AndroidInjectionModule::class, ApplicationModule::class, ActivityBindingModule::class))
+@Component(modules = arrayOf(NewsRepositoryModule::class, AndroidInjectionModule::class, ApplicationModule::class, ActivityBindingModule::class))
 interface AppComponent : AndroidInjector<NewsRoomApplication> {
 
+    fun getNewsRepository(): NewsRepository
+
+    // Gives us syntactic sugar. we can then do DaggerAppComponent.builder().application(this).build().inject(this);
+    // never having to instantiate any modules or say which module we are passing the application to.
+    // Application will just be provided into our app graph now.
     @Component.Builder
     interface Builder {
         @BindsInstance
