@@ -4,3 +4,4 @@ import com.gadgetmedia.newsroom.view.MvvmFragment
 
 
 class DetailFragment : MvvmFragment()
+//DetailFragment
